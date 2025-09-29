@@ -1,0 +1,9 @@
+# Core / optional libs
+frida
+frida-tools
+# Optional for richer static analysis; install only if you need it:
+androguard
+# Optional for PDF output
+reportlab
+# Testing
+pytest
