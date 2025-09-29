@@ -1,0 +1,40 @@
+Android App Security Scanner
+
+A command-line tool to automate Android app security checks using static analysis and optional dynamic testing with Frida.
+It is designed to help researchers and testers quickly identify common issues based on OWASP Mobile Top 10 and reduce repetitive manual effort.
+
+✨ Features
+
+Static APK analysis
+
+Extract manifest, package, and permissions
+
+Detect potentially dangerous permissions
+
+Identify Flutter-based apps
+
+Check for exported activities, services, receivers, and providers
+
+Dynamic testing with Frida (optional)
+
+Run reusable Frida scripts against apps
+
+Example script: trace Activity lifecycle (onResume, onPause)
+
+Easily extendable with your own JavaScript hooks
+
+Reporting
+
+Generate human-readable text reports
+
+Optional PDF reports (if reportlab is installed)
+
+Include metadata, findings, and evidence
+
+Designed for automation
+
+Unified CLI (cli.py)
+
+Easily extensible for custom checks
+
+Can be integrated into CI/CD pipelines
