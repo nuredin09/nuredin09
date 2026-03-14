@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Mesfin | IT Student - Addis Ababa University</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ethiopian Modern Colors */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            --secondary: #7c3aed;
+            --accent-1: #06b6d4;
+            --accent-2: #8b5cf6;
+            --ethio-green: #16a34a;
+            --ethio-yellow: #eab308;
+            --ethio-red: #dc2626;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --card-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Unique Geometric Background */
+        .geometric-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .geometric-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent 0px,
+                    transparent 20px,
+                    var(--primary) 20px,
+                    var(--primary) 22px
+                ),
+                repeating-linear-gradient(
+                    135deg,
+                    transparent 0px,
+                    transparent 30px,
+                    var(--secondary) 30px,
+                    var(--secondary) 32px
+                );
+            animation: backgroundMove 60s linear infinite;
+        }
+
+        @keyframes backgroundMove {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(10%, 10%) rotate(5deg); }
+        }
+
+        /* Ethiopian Pattern Overlay */
+        .ethiopian-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, var(--ethio-green) 1px, transparent 1px),
+                radial-gradient(circle at 80% 70%, var(--ethio-yellow) 1px, transparent 1px),
+                radial-gradient(circle at 40% 50%, var(--ethio-red) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.03;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Abstract Shapes */
+        .abstract-shape {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+            filter: blur(80px);
+            opacity: 0.1;
+            z-index: -1;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            bottom: 10%;
+            right: 5%;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            animation-delay: -5s;
+        }
+
+        .shape-3 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, var(--ethio-green), var(--ethio-yellow));
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(5%, 5%) scale(1.1); }
+        }
+
+        /* Loader */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-text {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: loaderPulse 1.5s ease-in-out infinite;
+        }
+
+        .loader-subtext {
+            color: var(--gray);
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        @keyframes loaderPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        /* Modern Navigation */
+        .nav-container {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .modern-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 100px;
+            padding: 1rem 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 100px;
+            padding: 0.8rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .mobile-nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            list-style: none;
+        }
+
+        .mobile-nav-item {
+            flex: 1;
+            text-align: center;
+        }
+
+        .mobile-nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.7rem;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+            gap: 0.2rem;
+        }
+
+        .mobile-nav-link i {
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-link.active {
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .mobile-nav-link.active i {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Hero Section - Modern Minimal */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 6rem;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            animation: fadeInLeft 1s ease;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .greeting {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));
+            padding: 0.5rem 1.5rem;
+            border-radius: 100px;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+
+        .greeting i {
+            color: var(--ethio-yellow);
+        }
+
+        .hero-title {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .location-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 100px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .location-chip i {
+            color: var(--ethio-green);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-primary i {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover i {
+            transform: translateX(5px);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--dark);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Hero Image - Modern Design */
+        .hero-image {
+            position: relative;
+            animation: fadeInRight 1s ease;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: auto;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.02);
+        }
+
+        .image-decoration {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            border: 2px dashed var(--primary);
+            border-radius: 50px;
+            opacity: 0.3;
+            animation: rotate 20s linear infinite;
+            z-index: 1;
+        }
+
+        .image-decoration-2 {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid var(--secondary);
+            border-radius: 40px;
+            opacity: 0.2;
+            animation: rotateReverse 15s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes rotateReverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+
+        .floating-card {
+            position: absolute;
+            bottom: 30px;
+            right: -30px;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            z-index: 3;
+            animation: float 3s ease-in-out infinite;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .floating-card i {
+            color: var(--ethio-green);
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .floating-card span {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .floating-card small {
+            color: var(--gray);
+            display: block;
+            margin-top: 0.2rem;
+        }
+
+        /* Social Links - Modern */
+        .social-links-modern {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link-modern {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .social-link-modern:hover {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Section Title */
+        .section-title-modern {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title-modern span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title-modern::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+        }
+
+        /* About Section - Modern Cards */
+        .about-modern {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image-modern {
+            position: relative;
+        }
+
+        .about-image-modern img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .experience-badge .number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .experience-badge .text {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .university-badge-modern {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3);
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .university-badge-modern i {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .university-badge-modern small {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .about-text-modern h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .about-text-modern p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1);
+            border-color: var(--primary);
+        }
+
+        .info-card i {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: var(--dark);
+        }
+
+        .info-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Stats Section - Modern */
+        .stats-modern {
+            padding: 4rem 0;
+        }
+
+        .stats-grid-modern {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card-modern {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card-modern:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1);
+        }
+
+        .stat-number-modern {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label-modern {
+            color: var(--gray);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Projects Section - Modern Grid */
+        .projects-modern {
+            padding: 6rem 0;
+        }
+
+        .projects-grid-modern {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .project-card-modern {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .project-card-modern:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(37, 99, 235, 0.15);
+        }
+
+        .project-image-modern {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image-modern img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card-modern:hover .project-image-modern img {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-content-modern {
+            padding: 2rem;
+        }
+
+        .project-title-modern {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .project-desc-modern {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .project-tech-modern {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag-modern {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-links-modern {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link-modern {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-link-modern:hover {
+            color: var(--primary);
+        }
+
+        /* Skills Section - Modern */
+        .skills-modern {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .skills-container-modern {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+        }
+
+        .skill-category-modern h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+
+        .skill-items-modern {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .skill-item-modern {
+            width: 100%;
+        }
+
+        .skill-info-modern {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: var(--gray);
+        }
+
+        .skill-bar-modern {
+            width: 100%;
+            height: 8px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .skill-progress-modern {
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 8px;
+            width: 0;
+            transition: width 1.5s ease;
+            position: relative;
+        }
+
+        /* Tech Stack - Modern */
+        .tech-stack-modern {
+            padding: 6rem 0;
+        }
+
+        .tech-grid-modern {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .tech-item-modern {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .tech-item-modern:hover {
+            transform: translateY(-5px) rotate(2deg);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1);
+            border-color: var(--primary);
+        }
+
+        .tech-item-modern i {
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .tech-item-modern h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .tech-item-modern p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section - Modern */
+        .contact-modern {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .contact-grid-modern {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info-modern {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-card-modern {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(124, 58, 237, 0.05));
+            padding: 1.5rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(37, 99, 235, 0.1);
+        }
+
+        .contact-card-modern:hover {
+            transform: translateX(10px);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));
+        }
+
+        .contact-icon-modern {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .contact-text-modern h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: var(--dark);
+        }
+
+        .contact-text-modern p {
+            color: var(--gray);
+        }
+
+        .form-modern {
+            background: white;
+            padding: 2rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group-modern {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-group-modern i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .form-group-modern textarea ~ i {
+            top: 1.5rem;
+        }
+
+        .form-control-modern {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            background: rgba(0, 0, 0, 0.02);
+            border: 2px solid transparent;
+            border-radius: 15px;
+            color: var(--dark);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .form-control-modern:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.1);
+        }
+
+        textarea.form-control-modern {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3);
+        }
+
+        .submit-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Footer */
+        .footer-modern {
+            padding: 3rem 4rem;
+            text-align: center;
+            color: var(--gray);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* Back to Top */
+        .back-to-top-modern {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+            border: none;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+
+        .back-to-top-modern.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top-modern:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+
+            .projects-grid-modern,
+            .tech-grid-modern {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid-modern {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                top: 1rem;
+            }
+
+            .modern-nav {
+                padding: 0.8rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            .hero-content,
+            .about-grid,
+            .contact-grid-modern,
+            .skills-container-modern {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .section-title-modern {
+                font-size: 2.5rem;
+            }
+
+            .projects-grid-modern,
+            .tech-grid-modern {
+                grid-template-columns: 1fr;
+            }
+
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .floating-card {
+                right: 0;
+            }
+
+            .back-to-top-modern {
+                bottom: 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .stats-grid-modern {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Abstract Background Elements -->
+    <div class="geometric-bg"></div>
+    <div class="ethiopian-pattern"></div>
+    <div class="abstract-shape shape-1"></div>
+    <div class="abstract-shape shape-2"></div>
+    <div class="abstract-shape shape-3"></div>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-text">MESFIN</div>
+            <div class="loader-subtext">IT Student | Addis Ababa</div>
+        </div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <div class="nav-container">
+        <nav class="modern-nav">
+            <a href="#" class="nav-logo">M.A</a>
+            <div class="nav-links">
+                <a href="#home" class="active">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <ul class="mobile-nav-items">
+            <li class="mobile-nav-item">
+                <a href="#home" class="mobile-nav-link active">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#about" class="mobile-nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>About</span>
+                </a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#projects" class="mobile-nav-link">
+                    <i class="fas fa-code"></i>
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#skills" class="mobile-nav-link">
+                    <i class="fas fa-cog"></i>
+                    <span>Skills</span>
+                </a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#contact" class="mobile-nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top-modern" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="greeting">
+                            <i class="fas fa-hand-peace"></i>
+                            <span>Selam, I'm</span>
+                        </div>
+                        <h1 class="hero-title">
+                            Mesfin <span> Teshome</span>
+                        </h1>
+                        <div class="location-chip">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Addis Ababa, Ethiopia</span>
+                        </div>
+                        <p class="hero-subtitle">
+                            IT Student at Addis Ababa University passionate about creating innovative tech solutions and exploring the future of software development.
+                        </p>
+                        <div class="hero-cta">
+                            <a href="#projects" class="btn btn-primary">
+                                View Projects <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="#contact" class="btn btn-secondary">
+                                Contact Me <i class="fas fa-comment"></i>
+                            </a>
+                        </div>
+                        <div class="social-links-modern">
+                            <a href="#" class="social-link-modern"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-link-modern"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link-modern"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link-modern"><i class="fab fa-telegram-plane"></i></a>
+                            <a href="#" class="social-link-modern"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link-modern"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="image-wrapper">
+                            <div class="image-decoration"></div>
+                            <div class="image-decoration-2"></div>
+                            <img src="home.jpg" alt="Mesfin" class="profile-image">
+                            <div class="floating-card">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>AAU</span>
+                                <small>IT Student</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-modern">
+            <div class="container">
+                <h2 class="section-title-modern">
+                    About <span>Me</span>
+                </h2>
+                <div class="about-grid">
+                    <div class="about-image-modern">
+                        <img src="about.jpg" alt="Mesfin">
+                        <div class="experience-badge">
+                            <div class="number">3+</div>
+                            <div class="text">Years of Learning</div>
+                        </div>
+                        <div class="university-badge-modern">
+                            <i class="fas fa-university"></i>
+                            <div>AAU</div>
+                            <small>Addis Ababa</small>
+                        </div>
+                    </div>
+                    <div class="about-text-modern">
+                        <h3>IT Student & Aspiring Developer</h3>
+                        <p>
+                            I'm currently pursuing my degree in Information Technology at Addis Ababa University, one of Ethiopia's premier institutions. My journey in tech started with curiosity and has grown into a passion for building solutions that make a difference.
+                        </p>
+                        <p>
+                            I love turning complex problems into simple, elegant solutions. When I'm not coding, you'll find me exploring new technologies, reading tech blogs, or collaborating with fellow students on exciting projects.
+                        </p>
+                        <div class="info-cards">
+                            <div class="info-card">
+                                <i class="fas fa-user"></i>
+                                <h4>Full Name</h4>
+                                <p>Mesfin Teshome</p>
+                            </div>
+                            <div class="info-card">
+                                <i class="fas fa-calendar"></i>
+                                <h4>Age</h4>
+                                <p>23 Years</p>
+                            </div>
+                            <div class="info-card">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <h4>Location</h4>
+                                <p>Addis Ababa</p>
+                            </div>
+                            <div class="info-card">
+                                <i class="fas fa-graduation-cap"></i>
+                                <h4>Program</h4>
+                                <p> IT</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-modern">
+            <div class="container">
+                <div class="stats-grid-modern">
+                    <div class="stat-card-modern" data-count="15">
+                        <div class="stat-number-modern">0</div>
+                        <div class="stat-label-modern">Projects</div>
+                    </div>
+                    <div class="stat-card-modern" data-count="8">
+                        <div class="stat-number-modern">0</div>
+                        <div class="stat-label-modern">Technologies</div>
+                    </div>
+                    <div class="stat-card-modern" data-count="3">
+                        <div class="stat-number-modern">0</div>
+                        <div class="stat-label-modern">Years</div>
+                    </div>
+                    <div class="stat-card-modern" data-count="10">
+                        <div class="stat-number-modern">0</div>
+                        <div class="stat-label-modern">Certifications</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-modern">
+            <div class="container">
+                <h2 class="section-title-modern">
+                    Featured <span>Projects</span>
+                </h2>
+                <div class="projects-grid-modern">
+                    <!-- Project 1 -->
+                    <div class="project-card-modern">
+                        <div class="project-image-modern">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Student Portal">
+                            <span class="project-overlay">Latest</span>
+                        </div>
+                        <div class="project-content-modern">
+                            <h3 class="project-title-modern">Student Portal</h3>
+                            <p class="project-desc-modern">
+                                A web platform for AAU students to access grades, materials, and communicate with instructors.
+                            </p>
+                            <div class="project-tech-modern">
+                                <span class="tech-tag-modern">React</span>
+                                <span class="tech-tag-modern">Node.js</span>
+                                <span class="tech-tag-modern">MongoDB</span>
+                            </div>
+                            <div class="project-links-modern">
+                                <a href="#" class="project-link-modern"><i class="fab fa-github"></i> Code</a>
+                                <a href="#" class="project-link-modern"><i class="fas fa-external-link-alt"></i> Live</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card-modern">
+                        <div class="project-image-modern">
+                            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ethiopian Tourism">
+                            <span class="project-overlay">Popular</span>
+                        </div>
+                        <div class="project-content-modern">
+                            <h3 class="project-title-modern">Ethiopia Guide</h3>
+                            <p class="project-desc-modern">
+                                A travel guide showcasing Ethiopian destinations, culture, and historical sites.
+                            </p>
+                            <div class="project-tech-modern">
+                                <span class="tech-tag-modern">HTML5</span>
+                                <span class="tech-tag-modern">CSS3</span>
+                                <span class="tech-tag-modern">JavaScript</span>
+                            </div>
+                            <div class="project-links-modern">
+                                <a href="#" class="project-link-modern"><i class="fab fa-github"></i> Code</a>
+                                <a href="#" class="project-link-modern"><i class="fas fa-external-link-alt"></i> Live</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card-modern">
+                        <div class="project-image-modern">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Weather App">
+                            <span class="project-overlay">New</span>
+                        </div>
+                        <div class="project-content-modern">
+                            <h3 class="project-title-modern">Weather App</h3>
+                            <p class="project-desc-modern">
+                                Real-time weather updates for major Ethiopian cities with beautiful visuals.
+                            </p>
+                            <div class="project-tech-modern">
+                                <span class="tech-tag-modern">React</span>
+                                <span class="tech-tag-modern">API</span>
+                                <span class="tech-tag-modern">CSS</span>
+                            </div>
+                            <div class="project-links-modern">
+                                <a href="#" class="project-link-modern"><i class="fab fa-github"></i> Code</a>
+                                <a href="#" class="project-link-modern"><i class="fas fa-external-link-alt"></i> Live</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Section -->
+        <section class="tech-stack-modern">
+            <div class="container">
+                <h2 class="section-title-modern">
+                    Tech <span>Stack</span>
+                </h2>
+                <div class="tech-grid-modern">
+                    <div class="tech-item-modern">
+                        <i class="fab fa-html5"></i>
+                        <h4>HTML5</h4>
+                        <p>Advanced</p>
+                    </div>
+                    <div class="tech-item-modern">
+                        <i class="fab fa-css3-alt"></i>
+                        <h4>CSS3</h4>
+                        <p>Advanced</p>
+                    </div>
+                    <div class="tech-item-modern">
+                        <i class="fab fa-js"></i>
+                        <h4>JavaScript</h4>
+                        <p>Intermediate</p>
+                    </div>
+                    <div class="tech-item-modern">
+                        <i class="fab fa-react"></i>
+                        <h4>React</h4>
+                        <p>Intermediate</p>
+                    </div>
+                    <div class="tech-item-modern">
+                        <i class="fab fa-node-js"></i>
+                        <h4>Node.js</h4>
+                        <p>Intermediate</p>
+                    </div>
+                    <div class="tech-item-modern">
+                        <i class="fas fa-database"></i>
+                        <h4>MongoDB</h4>
+                        <p>Beginner</p>
+                    </div>
+                    <div class="tech-item-modern">
+                        <i class="fab fa-python"></i>
+                        <h4>Python</h4>
+                        <p>Intermediate</p>
+                    </div>
+                    <div class="tech-item-modern">
+                        <i class="fab fa-git-alt"></i>
+                        <h4>Git</h4>
+                        <p>Intermediate</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-modern">
+            <div class="container">
+                <h2 class="section-title-modern">
+                    Skills & <span>Expertise</span>
+                </h2>
+                <div class="skills-container-modern">
+                    <div class="skill-category-modern">
+                        <h3>Programming</h3>
+                        <div class="skill-items-modern">
+                            <div class="skill-item-modern">
+                                <div class="skill-info-modern">
+                                    <span>HTML/CSS</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="skill-bar-modern">
+                                    <div class="skill-progress-modern" data-progress="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item-modern">
+                                <div class="skill-info-modern">
+                                    <span>JavaScript</span>
+                                    <span>75%</span>
+                                </div>
+                                <div class="skill-bar-modern">
+                                    <div class="skill-progress-modern" data-progress="75"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item-modern">
+                                <div class="skill-info-modern">
+                                    <span>Python</span>
+                                    <span>70%</span>
+                                </div>
+                                <div class="skill-bar-modern">
+                                    <div class="skill-progress-modern" data-progress="70"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item-modern">
+                                <div class="skill-info-modern">
+                                    <span>Java</span>
+                                    <span>65%</span>
+                                </div>
+                                <div class="skill-bar-modern">
+                                    <div class="skill-progress-modern" data-progress="65"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category-modern">
+                        <h3>Tools & Others</h3>
+                        <div class="skill-items-modern">
+                            <div class="skill-item-modern">
+                                <div class="skill-info-modern">
+                                    <span>Git/GitHub</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="skill-bar-modern">
+                                    <div class="skill-progress-modern" data-progress="80"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item-modern">
+                                <div class="skill-info-modern">
+                                    <span>VS Code</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="skill-bar-modern">
+                                    <div class="skill-progress-modern" data-progress="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item-modern">
+                                <div class="skill-info-modern">
+                                    <span>SQL</span>
+                                    <span>70%</span>
+                                </div>
+                                <div class="skill-bar-modern">
+                                    <div class="skill-progress-modern" data-progress="70"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item-modern">
+                                <div class="skill-info-modern">
+                                    <span>Figma</span>
+                                    <span>65%</span>
+                                </div>
+                                <div class="skill-bar-modern">
+                                    <div class="skill-progress-modern" data-progress="65"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-modern">
+            <div class="container">
+                <h2 class="section-title-modern">
+                    Let's <span>Connect</span>
+                </h2>
+                <div class="contact-grid-modern">
+                    <div class="contact-info-modern">
+                        <div class="contact-card-modern">
+                            <div class="contact-icon-modern">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text-modern">
+                                <h3>Location</h3>
+                                <p>Addis Ababa, Ethiopia</p>
+                            </div>
+                        </div>
+                        <div class="contact-card-modern">
+                            <div class="contact-icon-modern">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text-modern">
+                                <h3>Email</h3>
+                                <p>mesfin.alemayehu@aau.edu.et</p>
+                            </div>
+                        </div>
+                        <div class="contact-card-modern">
+                            <div class="contact-icon-modern">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text-modern">
+                                <h3>Phone</h3>
+                                <p>+251 912 345 678</p>
+                            </div>
+                        </div>
+                        <div class="contact-card-modern">
+                            <div class="contact-icon-modern">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div class="contact-text-modern">
+                                <h3>University</h3>
+                                <p>Addis Ababa University</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-modern">
+                        <form id="contactForm">
+                            <div class="form-group-modern">
+                                <i class="fas fa-user"></i>
+                                <input type="text" class="form-control-modern" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group-modern">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" class="form-control-modern" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group-modern">
+                                <i class="fas fa-tag"></i>
+                                <input type="text" class="form-control-modern" placeholder="Subject">
+                            </div>
+                            <div class="form-group-modern">
+                                <i class="fas fa-comment"></i>
+                                <textarea class="form-control-modern" placeholder="Your Message" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                Send Message <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-modern">
+        <p>&copy; 2026 Mesfin Alemayehu. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.loader').style.opacity = '0';
+                setTimeout(() => {
+                    document.querySelector('.loader').style.visibility = 'hidden';
+                }, 500);
+            }, 1500);
+        });
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.stat-number-modern');
+        const speed = 200;
+
+        const animateCounter = () => {
+            counters.forEach(counter => {
+                const target = parseInt(counter.parentElement.getAttribute('data-count'));
+                const count = parseInt(counter.innerText);
+                
+                if (count < target) {
+                    const increment = Math.ceil(target / speed);
+                    counter.innerText = Math.min(count + increment, target);
+                    setTimeout(animateCounter, 20);
+                }
+            });
+        };
+
+        // Intersection Observer for counters
+        const statsSection = document.querySelector('.stats-modern');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(statsSection);
+
+        // Skill Progress Animation
+        const skillBars = document.querySelectorAll('.skill-progress-modern');
+        
+        const animateSkills = () => {
+            skillBars.forEach(bar => {
+                const progress = bar.getAttribute('data-progress');
+                bar.style.width = progress + '%';
+            });
+        };
+
+        // Intersection Observer for skills
+        const skillsSection = document.querySelector('.skills-modern');
+        const skillsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkills();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        if (skillsSection) skillsObserver.observe(skillsSection);
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Update active states
+                    document.querySelectorAll('.nav-links a, .mobile-nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const button = e.target.querySelector('button');
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                alert('Thank you for your message! I\'ll get back to you soon.');
+                e.target.reset();
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }, 2000);
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileNav = document.querySelector('.mobile-nav');
+        
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
+            });
+        }
+
+        // Update active nav item based on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav-link');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Reveal animations on scroll
+        const revealElements = document.querySelectorAll('.project-card-modern, .tech-item-modern, .info-card, .stat-card-modern, .contact-card-modern');
+        
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        revealElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+    </script>
+</body>
+</html>
